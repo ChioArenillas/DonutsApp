@@ -1,0 +1,50 @@
+@import "../../styles/vars.css";
+
+.navbarBg{
+    background-color: var(--color-dark);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: sticky;
+    top:0;
+    z-index: 10;
+}    
+
+.navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 2;
+    margin: 0 10%;
+}
+
+.title {
+    font-size: var(--font-size-title);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+.menuBtn{
+    display: none;
+}
+.menu {
+    display: flex;
+}
+.menuItems {
+    display: flex;
+    gap: 47px;
+    list-style: none;
+}
+    .menuItems a {
+        text-decoration: none;
+        color: var(--color-text-light);
+    }
+
+.menu  {
+    font-size: var(--font-size-text);
+    color: var(--color-text-light);
+    text-decoration: none;
+}
+

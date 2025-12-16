@@ -1,9 +1,19 @@
 import React from 'react'
+import Navbar from '@/components/Navbar/Navbar'
+import Home from '@/components/Home/Home'
+import Footer from '@/components/Footer/Footer'
+
 
 export default function Home() {
   return (
-    <div>
-      <h1>DONUTS</h1>
+    <div >
+      <Navbar />
+      <Home />
+      <Footer />
     </div>
   )
 }
+
+
+
+
