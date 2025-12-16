@@ -4,7 +4,7 @@ import Home from '@/components/Home/Home'
 import Footer from '@/components/Footer/Footer'
 
 
-export default function Home() {
+export default function Index() {
   return (
     <div >
       <Navbar />

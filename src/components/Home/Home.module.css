@@ -1,12 +1,15 @@
 @import "../../styles/vars.css";
 @import "../../styles/globals.css";
 
-.text {
+.btnsection {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     align-items: center;
-    padding-bottom: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
 }
+    
+
 
 

@@ -1,10 +1,11 @@
 @import "../../styles/vars.css";
+@import "../../styles/globals.css";
 
 .footer{
     background-color: var(--color-dark);
 }
 .content{
-    padding-top: 75px;
+    padding-top: 50px;
     padding-bottom: 50px;
     margin-left: 10%;
     margin-right: 10%;

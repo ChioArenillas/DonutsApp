@@ -1,24 +1,31 @@
+import Footer from '@/components/Footer/Footer'
+import Navbar from '@/components/Navbar/Navbar'
 import Link from 'next/link'
 import React from 'react'
+import styles from "../components/Contact/Contact.module.css"
 
 export default function ContactPage() {
   return (
-    <div className='page'>
-      <div>
-        <h2 className='title'>CONTACT</h2>
+    <div>
+      <Navbar />
+    <div className={styles.container}>
+      <div className={styles.title}>
+        <h1>CONTACT</h1>
       </div>
-      <div className='contactDetails'>
-        <p>SWEET & SALTY</p>
-        <p>Madrid</p>
-        <p>sweetandsalty@gmail.com</p>
+      <div className={styles.text}>
+        <span>SWEET & SALTY</span>
+        <span>Madrid</span>
+        <span>sweetandsalty@gmail.com</span>
       </div>
       <div>
-        <button>
-        <Link className='button-link' href={{
+        <button className={styles.btn}>
+        <Link className={styles.btnLink} href={{
             pathname:'/'
             }}>Back to Homepage</Link>
         </button>
       </div>
+    </div>
+    <Footer />
     </div>
   )
 }
