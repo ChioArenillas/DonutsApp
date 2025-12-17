@@ -22,6 +22,20 @@ body {
   padding-bottom: 50px;
   margin: 40px 0 40px 0;
 }
+.component {
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.componentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
 
 .title {
   font-size: var(--font-size-title);
@@ -29,10 +43,15 @@ body {
   font-weight: bold;
   letter-spacing: 2px;
 }
+
 .text {
   font-size: var(--font-size-text);
   color: var(--color-text-light);
-
+}
+.successMessage{
+  font-size: var(--font-size-text);
+  color: var(--color-text-light);
+  font-weight: bold;
 }
 
 .btn {
@@ -41,19 +60,33 @@ body {
   font-size: var(--font-size-text);
   font-weight: bold;
   background: var(--color-secondary);
-  color: var(--color-text-light);
+  color: var(--color-btn-text);
+  border-radius: 8px;
+  cursor: pointer;
+  border-color: var(--color-secondary);
+  text-decoration: none;
+}
+.smallBtn {
+  width: fit-content;
+  padding: 8px;
+  font-size: var(--font-size-text);
+  font-weight: bold;
+  background: var(--color-secondary);
+  color: var(--color-btn-text);
   border-radius: 8px;
   cursor: pointer;
   border-color: var(--color-secondary);
   text-decoration: none;
 }
 
-.btn:hover {
+
+.btn:hover, .smallBtn:hover {
   background: var(--color-dark);
 }
 
 .btnLink {
   text-decoration: none;
+  color: var(--color-btn-text);
 }
 
 @media screen and (max-width: 830px) {
@@ -64,4 +97,11 @@ body {
   .text {
     font-size: var(--font-size-small-text);
   }
+  .successMessage {
+    font-size: var(--font-size-small-text);
+  }
+  .smallBtn {
+    font-size: var(--font-size-small-text);
+  }
+
 }

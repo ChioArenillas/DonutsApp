@@ -9,8 +9,8 @@
     padding-bottom: 50px;
     margin-left: 10%;
     margin-right: 10%;
-    color: var(--color-text-light);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    color: var(--color-text-light);
     font-size: var(--font-size-text);
 }

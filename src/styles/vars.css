@@ -2,15 +2,17 @@
     /* colors */
     --color-text-dark:#4B5563;
     --color-text-light: #ffff;
-    --color-primary: #a85dc165;
+    --color-primary: #a85dc1;
     --color-secondary: #9e51b5;
     --color-dark: #9b369e;
     --color-bg: #ffff;
+    --color-card-bg:#ffffff53;
+    --color-btn-text:#551a8b;
 
     /* font-size */
     --font-size-title: 24px;
     --font-size-text: 16px;
-    --font-size-small-title: 22px;
+    --font-size-small-title: 20px;
     --font-size-small-text: 14px;
 }
 

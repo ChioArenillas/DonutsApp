@@ -1,2 +1,23 @@
 @import "../../styles/vars.css";
 @import "../../styles/globals.css";
+
+.cardList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0px;
+
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--color-card-bg);
+    color: var(--color-dark);
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+}
