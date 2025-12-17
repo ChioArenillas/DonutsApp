@@ -15,7 +15,6 @@ const crearDonut = async (opt, {resetForm}) => {
   setSuccessMessage('New Donut has been added to the list')
  }
 const validationSchemaYup = object({
-  id: number().required(),
   name: string().required(),
   flavor: string().required(),
   price: number().required(),
@@ -27,10 +26,9 @@ const validationSchemaYup = object({
         <div className={styles.title}>
         <h1>CREATE NEW DONUT</h1>
         </div>
-        <div className={styles.text}>
+        <div className={styles.card}>
           <Formik 
           initialValues={{
-            id: '',
             name: '',
             flavor: '',
             price: ''
@@ -38,11 +36,6 @@ const validationSchemaYup = object({
           onSubmit={crearDonut} validationSchema={validationSchemaYup}>
             {
               ({ }) => (<Form className={styles.componentContainer}>
-                <div>
-                  <span>Id: </span>
-                  <Field type='number' name='id' ></Field>
-                  <ErrorMessage name='id' component='div' />
-                </div>
                 <div>
                   <span>Name: </span>
                   <Field type='text' name='name' ></Field>
