@@ -14,8 +14,8 @@ export default function DetailPage() {
                 <DetailsComponent />
                 <button className={styles.btn}>
                     <Link className={styles.btnLink} href={{
-                        pathname: '/'
-                    }}>Back to Homepage</Link>
+                        pathname: './ListPage'
+                    }}>Back to All Donuts</Link>
                 </button>
             </div>
             <Footer />

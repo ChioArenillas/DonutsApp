@@ -1,12 +1,8 @@
 @import "../../styles/vars.css";
 @import "../../styles/globals.css";
 
-.text {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    padding-bottom: 20px;
+.title {
+    padding: -10px;
 }
 
 

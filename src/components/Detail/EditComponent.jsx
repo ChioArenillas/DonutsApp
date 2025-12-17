@@ -2,63 +2,67 @@ import React, { useState } from 'react'
 import styles from "./Detail.module.css"
 import { updateDonut } from '@/api/donutFetch'
 import { useRouter } from 'next/router'
+import { object, string, number } from 'yup'
+import { ErrorMessage, Formik, Form, Field } from 'formik'
 
 
-export default function EditComponent(donut) {
+export default function EditComponent({ donut, closeEdit }) {
 
   const router = useRouter()
   const { id } = router.query
 
-  const [name, setName] = useState('')
-  const [flavor, setFlavor] = useState('')
-  const [price, setPrice] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
 
-
-  const handlerOnChangeName = (e) => {
-    setName(e.target.value)
+  const editDonut = async (opt) => {
+    await updateDonut(id, JSON.stringify(opt))
+    closeEdit()
   }
-  const handlerOnChangeFlavor = (e) => {
-    setFlavor(e.target.value)
-  }  
-  const handlerOnChangePrice = (e) => {
-    setPrice(e.target.value)
-  }
-
-  const saveDonut = async () => { 
-    await updateDonut (id, JSON.stringify({
-      name,
-      flavor,
-      price
-    }))
-    setSuccessMessage('Donut has been edited')
-  }
+  const validationSchemaYup = object({
+    name: string().required(),
+    flavor: string().required(),
+    price: number().required()
+  })
 
   return (
     <div className={styles.componentContainer}>
-        <div className={styles.title}>
+      <div className={styles.title}>
         <h1>EDIT DONUT</h1>
-        </div>
-        <div className={styles.card}>
-        <div>
-          <label>New Name: </label>
-          <input type="text" value={name} onChange={handlerOnChangeName} placeholder={donut.name}/>
-        </div>
-        <div>
-          <label>New Flavor: </label>
-          <input type="text" value={flavor} onChange={handlerOnChangeFlavor} placeholder={donut.flavor}/>
-        </div>
-        <div>
-          <label>New Price: </label>
-          <input type="number" value={price} onChange={handlerOnChangePrice} placeholder={donut.price}/>
-        </div>
-        <div>
-          <button className={styles.smallBtn} onClick={saveDonut}>Save</button>
-        </div>
-        {successMessage && (
-                  <p className={styles.successMessage}>{successMessage}</p>
-        )}
-        </div>
+      </div>
+      <div className={styles.card}>
+        <Formik
+          initialValues={{
+            name: donut.name,
+            flavor: donut.flavor,
+            price: donut.price
+          }}
+          onSubmit={editDonut} validationSchemaYup={validationSchemaYup}>
+          {
+            ({ }) => (<Form className={styles.componentContainer}>
+              <div>
+                <label>New Name: </label>
+                <Field type='text' name='name' placeholder={donut.name}></Field>
+                <ErrorMessage name='name' component='div' />
+              </div>
+              <div>
+                <label>New Flavor: </label>
+                <Field type='text' name='flavor' placeholder={donut.flavor}></Field>
+                <ErrorMessage name='flavor' component='div' />
+              </div>
+              <div>
+                <label>New Price: </label>
+                <Field type='number' name='price' placeholder={donut.price}></Field>
+                <ErrorMessage name='price' component='div' />
+              </div>
+              <div className={styles.btnSection}>
+              <button type='submit' className={styles.smallBtn}>Save</button>
+              <button type='button' className={styles.smallBtn} onClick={closeEdit}>Cancel</button>
+</div>
+            </Form>)
+          }
+        </Formik>
+      </div>
+
     </div>
   )
 }
+
+

@@ -9,7 +9,7 @@ export default function CreateComponent() {
 
 const [successMessage, setSuccessMessage] = useState('')
 
-const crearDonut = async (opt, {resetForm}) => {
+const newDonut = async (opt, {resetForm}) => {
   await createDonut(JSON.stringify(opt))
   resetForm()
   setSuccessMessage('New Donut has been added to the list')
@@ -33,7 +33,7 @@ const validationSchemaYup = object({
             flavor: '',
             price: ''
           }}
-          onSubmit={crearDonut} validationSchema={validationSchemaYup}>
+          onSubmit={newDonut} validationSchema={validationSchemaYup}>
             {
               ({ }) => (<Form className={styles.componentContainer}>
                 <div>

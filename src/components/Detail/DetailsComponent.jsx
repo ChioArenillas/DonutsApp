@@ -20,8 +20,17 @@ export default function DetailsComponent() {
     loadDonut()
   }, [id])
 
+  const handleCloseEdit = async () =>{
+    const donutAux = await getDonut(id)
+    setDonut(donutAux.data)
+    setIsEditing(false)
+  }
   const initUpdateDonut = () => {
     setIsEditing(true)
+  }
+  const handlerDeleteDonut = () => {
+    deleteDonut(id)
+    router.back()
   }
 
   return (
@@ -52,12 +61,12 @@ export default function DetailsComponent() {
               <button className={styles.smallBtn} onClick={initUpdateDonut}>Edit Donut</button>
             </div>
             <div>
-              <button className={styles.smallBtn} onClick={initUpdateDonut}>Delete Donut</button>
+              <button className={styles.smallBtn} onClick={handlerDeleteDonut}>Delete Donut</button>
             </div>
           </div>
         </div>
         :
-        <EditComponent donut={donut} />
+        <EditComponent donut={donut} closeEdit={handleCloseEdit} />
       }
     </div>
   )

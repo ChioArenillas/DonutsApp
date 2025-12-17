@@ -8,24 +8,26 @@ export default function ContactPage() {
   return (
     <div>
       <Navbar />
-    <div className={styles.container}>
-      <div className={styles.title}>
-        <h1>CONTACT</h1>
-      </div>
-      <div className={styles.text}>
-        <span>SWEET & SALTY</span>
-        <span>Madrid</span>
-        <span>sweetandsalty@gmail.com</span>
-      </div>
-      <div>
-        <button className={styles.btn}>
-        <Link className={styles.btnLink} href={{
-            pathname:'/'
+      <div className={styles.container}>
+        <div className={styles.componentContainer}>
+          <div className={styles.title}>
+            <h1>CONTACT</h1>
+          </div>
+          <div className={styles.card}>
+            <span>SWEET & SALTY</span>
+            <span>Madrid</span>
+            <span>sweetandsalty@gmail.com</span>
+          </div>
+        </div>
+        <div>
+          <button className={styles.btn}>
+            <Link className={styles.btnLink} href={{
+              pathname: '/'
             }}>Back to Homepage</Link>
-        </button>
+          </button>
+        </div>
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </div>
   )
 }
