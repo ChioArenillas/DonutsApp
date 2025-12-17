@@ -30,25 +30,30 @@ export default function DetailsComponent() {
         <h1>DETAILS</h1>
       </div>
       {!isEditing ?
-        <div>
+        <div className={styles.card}>
           <div>
-            <span>ID:</span>
+            <span>ID:  </span>
             <span>{donut?._id}</span>
           </div>
           <div>
-            <span>NAME:</span>
+            <span>NAME:  </span>
             <span>{donut?.name}</span>
           </div>
           <div>
-            <span>FLAVOUR:</span>
+            <span>FLAVOUR:  </span>
             <span>{donut?.flavor}</span>
           </div>
           <div>
-            <span>PRICE:</span>
+            <span>PRICE:  </span>
             <span>{donut?.price}</span>
           </div>
-          <div>
-            <button onClick={initUpdateDonut}>Edit Donut</button>
+          <div className={styles.btnSection}>
+            <div>
+              <button className={styles.smallBtn} onClick={initUpdateDonut}>Edit Donut</button>
+            </div>
+            <div>
+              <button className={styles.smallBtn} onClick={initUpdateDonut}>Delete Donut</button>
+            </div>
           </div>
         </div>
         :

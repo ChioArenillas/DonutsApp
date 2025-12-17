@@ -48,12 +48,27 @@ body {
   font-size: var(--font-size-text);
   color: var(--color-text-light);
 }
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--color-card-bg);
+    color: var(--color-text-light);
+    padding: 20px;
+    border-radius: 5px;
+}
+
 .successMessage{
   font-size: var(--font-size-text);
   color: var(--color-text-light);
   font-weight: bold;
 }
-
+.btnSection{
+  display: flex;
+  gap: 5px;
+}
 .btn {
   width: fit-content;
   padding: 14px;
