@@ -6,7 +6,7 @@ import React from 'react'
 import styles from "../components/Detail/Detail.module.css"
 import DetailsComponent from '@/components/Detail/DetailsComponent'
 
-export default function ListPage() {
+export default function DetailPage() {
     return (
         <div>
             <Navbar />
