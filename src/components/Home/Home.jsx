@@ -8,9 +8,6 @@ export default function Home() {
 
   return (
       <div className={styles.container}>
-        <div className={styles.title}>
-        <h1>SWEET & SALTY</h1>
-        </div>
         <div className={styles.btnSectionHome}>
           <button className={styles.btnCard}>
             <Link className={styles.btnLink} href={'../../CreatePage'}>CREATE NEW DONUT</Link>
