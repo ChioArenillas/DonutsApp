@@ -1,15 +1,27 @@
 @import "../../styles/vars.css";
 @import "../../styles/globals.css";
 
-.btnsection {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
     
+.btnSectionHome{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 15px;
+}
+.btnCard{
+  width: 120px;
+  height: 120px;
+  padding: 14px;
+  font-size: var(--font-size-text);
+  font-weight: bold;
+  background: var(--color-secondary);
+  color: var(--color-btn-text);
+  border-radius: 8px;
+  cursor: pointer;
+  border-color: var(--color-secondary);
+  text-decoration: none;
+  transition: transform 200ms ease-in-out;
+}
 
 
 

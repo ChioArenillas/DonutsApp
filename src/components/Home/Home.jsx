@@ -11,17 +11,17 @@ export default function Home() {
         <div className={styles.title}>
         <h1>SWEET & SALTY</h1>
         </div>
-        <div className={styles.btnsection}>
-          <button className={styles.btn}>
+        <div className={styles.btnSectionHome}>
+          <button className={styles.btnCard}>
             <Link className={styles.btnLink} href={'../../CreatePage'}>CREATE NEW DONUT</Link>
           </button>
-          <button className={styles.btn}>
+          <button className={styles.btnCard}>
             <Link className={styles.btnLink} href={'../../ListPage'}>ALL DONUTS</Link>
           </button>
-          <button className={styles.btn}>
+          <button className={styles.btnCard}>
             <Link className={styles.btnLink} href={'../../FavouritesPage'}>FAVOURITE DONUTS</Link>
           </button >      
-          <button className={styles.btn}>
+          <button className={styles.btnCard}>
             <Link className={styles.btnLink} href={'../../ContactPage'}>CONTACT</Link>
           </button>
         </div>

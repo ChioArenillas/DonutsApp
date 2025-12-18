@@ -6,6 +6,8 @@ import Link from 'next/link'
 export default function ListComponent() {
 
    const [donuts, setDonuts] = useState([])
+  const [favourites, setFavourites] = useState([])
+
 
   const getAllDonutsAux = async () => {
     const donutsAux = await getAllDonuts()
@@ -15,6 +17,12 @@ export default function ListComponent() {
   useEffect(() => {
     getAllDonutsAux()
   }, [])
+  const favouriteDonut = (donut) => {
+    if (!favourites.find(f => f.id === donut.id)) {
+      setFavourites([...favourites, donut])
+    }
+  }
+  
 
 
   return (
@@ -25,8 +33,8 @@ export default function ListComponent() {
       <div className={styles.cardList}>
         {
           donuts && donuts.map((donut, index) => {
-/*             const isFavourite = FavouritesComponent.find(f => f.id === donut.id);
- */            return <div className={styles.card} key={donut.id}>
+             const isFavourite = favourites.find(f => f.id === donut.id);
+             return <div className={styles.card} key={donut.id}>
               <div>{donut.id}</div>
               <div>{donut.name}</div>
               <div>
@@ -37,14 +45,14 @@ export default function ListComponent() {
                   }
                 }} ><button className={styles.smallBtn}>Details</button> </Link>
               </div>
-{/*               <div>
+               <div>
                 {
                   !isFavourite &&(
-                <button onClick={() => addFavourite(donut)}>Add to Favourites</button>
+                <button className={styles.smallBtn} onClick={() => favouriteDonut(donut)}>Add to Favourites</button>
                   )
                 }
               </div>
- */}              </div>
+               </div>
         })
         }
       </div>

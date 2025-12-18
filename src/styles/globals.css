@@ -13,11 +13,12 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: var(--color-dark);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
   padding-top: 50px;
   padding-bottom: 50px;
   margin: 40px 0 40px 0;
@@ -42,6 +43,7 @@ body {
   color: var(--color-text-light);
   font-weight: bold;
   letter-spacing: 2px;
+  text-transform: capitalize;
 }
 
 .text {
@@ -66,9 +68,11 @@ body {
   font-weight: bold;
 }
 .btnSection{
-  display: flex;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
 }
+
 .btn {
   width: fit-content;
   padding: 14px;
@@ -80,6 +84,7 @@ body {
   cursor: pointer;
   border-color: var(--color-secondary);
   text-decoration: none;
+  transition: transform 200ms ease-in-out;
 }
 .smallBtn {
   width: fit-content;
@@ -92,11 +97,13 @@ body {
   cursor: pointer;
   border-color: var(--color-secondary);
   text-decoration: none;
+  transition: transform 200ms ease-in-out;
 }
 
 
-.btn:hover, .smallBtn:hover {
+.btn:hover, .smallBtn:hover, .btnCard:hover {
   background: var(--color-dark);
+  transform: scale(1.1)
 }
 
 .btnLink {

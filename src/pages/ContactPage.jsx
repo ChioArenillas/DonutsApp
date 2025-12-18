@@ -15,7 +15,7 @@ export default function ContactPage() {
           </div>
           <div className={styles.card}>
             <span>SWEET & SALTY</span>
-            <span>Madrid</span>
+            <span>Casa de Gominola, C/ de la Piruleta, Madrid</span>
             <span>sweetandsalty@gmail.com</span>
           </div>
         </div>
