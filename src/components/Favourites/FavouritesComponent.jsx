@@ -1,14 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./Favourite.module.css"
+import { getFavourites, deleteFavourite } from '@/api/favouritesFetch'
+import Link from 'next/link'
 
+export default function FavouritesComponent() {
 
-export default function FavouritesComponent(props) {
+  const [favourites, setFavourites] = useState([])
 
-  const {favourites, setFavourites} = props
+  const getFavouritesAux = async () => {
+    const res = await getFavourites()
+    const validFavourites = res.data.filter(f => f.donutId !== null)
+      setFavourites(validFavourites)
+  }
 
-  const deleteFavourite = (donut) => {
-    setFavourites(favourites.filter(f => f.id !== donut.id));
-  };
+  useEffect(() => {
+    getFavouritesAux()
+  }, [])
+
+  const removeFavourite = async (donutId) => {
+    const res = await deleteFavourite(donutId)
+    setFavourites(favourites.filter(f => f.donutId?._id !== donutId))
+  }
 
   return (
     <div className={styles.component}>
@@ -16,28 +28,24 @@ export default function FavouritesComponent(props) {
         <h1>FAVOURITE DONUTS</h1>
       </div>
       <div className={styles.cardList}>
-        {
-          !favourites && (
-            <span className={styles.card}>Not favourites Donuts yet. Add some.</span>
-          )
-        }
-        {
-          favourites && favourites.map((donut) => {
-            return <div className={styles.card} key={donut.id}>
-              <div>{donut.id}</div>
-              <div>{donut.name}</div>
-              <div>
-                <Link href={{
-                  pathname: 'DetailPage',
-                  query: {
-                    id: donut.id
-                  }
-                }} ><button className={styles.smallBtn}>Details</button> </Link>
-              </div>
-              <button className={styles.smallBtn} onClick={() => deleteFavourite(donut)}>Remove from Favourites</button>
+        {favourites.length === 0 && (
+          <span className={styles.card}>No favourite donuts yet. Add some.</span>
+        )}
+        {favourites.map(fav => (
+          <div className={styles.card} key={fav._id}>
+            <div>{fav.donutId?._id}</div>
+            <div>{fav.donutId?.name}</div>
+            <div>
+              <Link href={{
+                pathname: 'DetailPage',
+                query: { id: fav.donutId?._id }
+              }}>
+                <button className={styles.smallBtn}>Details</button>
+              </Link>
             </div>
-          })
-        }
+            <button className={styles.smallBtn} onClick={() => removeFavourite(fav.donutId._id)}>Remove from Favourites</button>
+          </div>
+        ))}
       </div>
     </div>
   )

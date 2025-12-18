@@ -61,6 +61,14 @@ body {
     padding: 20px;
     border-radius: 5px;
 }
+.cardList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0px;
+}
+
 
 .successMessage{
   font-size: var(--font-size-text);

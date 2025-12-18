@@ -28,8 +28,9 @@ export default function DetailsComponent() {
   const initUpdateDonut = () => {
     setIsEditing(true)
   }
-  const handlerDeleteDonut = () => {
-    deleteDonut(id)
+  const handlerDeleteDonut = async () => {
+    await deleteDonut(id)
+    setDonut(null)
     router.back()
   }
 

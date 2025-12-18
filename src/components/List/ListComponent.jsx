@@ -2,24 +2,29 @@ import React, { useEffect, useState } from 'react'
 import styles from "./List.module.css"
 import { getAllDonuts } from '@/api/donutFetch'
 import Link from 'next/link'
+import { addFavourite, getFavourites } from '@/api/favouritesFetch'
 
 export default function ListComponent() {
 
   const [donuts, setDonuts] = useState([])
   const [favourites, setFavourites] = useState([])
 
-  const getAllDonutsAux = async () => {
+  const getData = async () => {
     const donutsAux = await getAllDonuts()
     setDonuts(donutsAux.data)
+
+    const favouritesAux = await getFavourites()
+    setFavourites(favouritesAux.data)
   }
 
   useEffect(() => {
-    getAllDonutsAux()
+    getData()
   }, [])
-  const favouriteDonut = (donut) => {
-    if (!favourites.find(f => f.id === donut.id)) {
-      setFavourites([...favourites, donut])
-    }
+
+  const handleAddFavourite = async (donutId) => {
+    const res = await addFavourite(donutId)
+    setFavourites([...favourites, res.data])
+    getData()
   }
 
   return (
@@ -29,9 +34,9 @@ export default function ListComponent() {
       </div>
       <div className={styles.cardList}>
         {
-          donuts && donuts.map((donut, index) => {
-            const isFavourite = favourites.find(f => f.id === donut.id);
-            return <div className={styles.card} key={donut.id}>
+          donuts && donuts.map((donut) => {
+            const isFavourite = donut && favourites.find(f => f.donutId?._id === donut?.id)
+            return <div className={styles.card} key={donut?.id}>
               <div>{donut.id}</div>
               <div>{donut.name}</div>
               <div>
@@ -44,9 +49,10 @@ export default function ListComponent() {
               </div>
               <div>
                 {
-                  !isFavourite && (
-                    <button className={styles.smallBtn} onClick={() => favouriteDonut(donut)}>Add to Favourites</button>
-                  )
+                  !isFavourite ?
+                    <button className={styles.smallBtn} onClick={() => handleAddFavourite(donut.id)}>Add to Favourites</button>
+                :
+                  <span> 🩷 </span>
                 }
               </div>
             </div>
