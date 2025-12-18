@@ -1,14 +1,14 @@
 @import "../../styles/vars.css";
 @import "../../styles/globals.css";
 
-.navbarBg{
+.navbarBg {
     background-color: var(--color-dark);
     margin-top: 10px;
     margin-bottom: 10px;
     position: sticky;
-    top:0;
+    top: 0;
     z-index: 10;
-}    
+}
 
 .navbar {
     position: relative;
@@ -28,26 +28,36 @@
     text-decoration: none;
     color: var(--color-text-light);
 }
-.menuBtn{
+.title:hover{
+    color: var(--color-text-dark);
+}
+
+.menuBtn {
     display: none;
 }
+
 .menu {
     display: flex;
 }
+
 .menuItems {
     display: flex;
     align-items: center;
     gap: 47px;
     list-style: none;
 }
-    .menuItems a {
-        text-decoration: none;
-        color: var(--color-text-light);
-    }
 
-.menu  {
+.menuItems a {
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+.menuItems a:hover {
+    color: var(--color-text-dark);
+}
+
+.menu {
     font-size: var(--font-size-text);
     color: var(--color-text-light);
     text-decoration: none;
 }
-
