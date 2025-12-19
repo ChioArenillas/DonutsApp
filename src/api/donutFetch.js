@@ -1,18 +1,20 @@
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const getAllDonuts = async () => {
-    const response = await fetch("http://localhost:9000/donuts")
+    const response = await fetch(`${API_URL}/donuts`)
     const donuts = await response.json()
     return donuts
 }
 
 export const getDonut = async (id) => {
-    const response = await fetch("http://localhost:9000/donuts/"+id)
+    const response = await fetch(`${API_URL}/donuts`+id)
     const donuts = await response.json()
     return donuts
 }
 
 export const deleteDonut = async (id) =>{
-    const response = await fetch ('http://localhost:9000/donuts/'+id, {
+    const response = await fetch (`${API_URL}/donuts`+id, {
         method: 'DELETE'
     })
     const donutDelete = await response.json()
@@ -22,7 +24,7 @@ export const deleteDonut = async (id) =>{
 }
 
 export const updateDonut = async (id, bodyParam) => {
-    const response = await fetch('http://localhost:9000/donuts/'+id,{
+    const response = await fetch(`${API_URL}/donuts`+id,{
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: bodyParam
@@ -35,7 +37,7 @@ export const updateDonut = async (id, bodyParam) => {
 }
 
 export const createDonut = async (bodyParam) => {
-    const response = await fetch('http://localhost:9000/donuts/',{
+    const response = await fetch(`${API_URL}/donuts`,{
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: bodyParam
