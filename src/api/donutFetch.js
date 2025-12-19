@@ -8,13 +8,13 @@ export const getAllDonuts = async () => {
 }
 
 export const getDonut = async (id) => {
-    const response = await fetch(`${API_URL}/donuts`+id)
+    const response = await fetch(`${API_URL}/donuts`/+id)
     const donuts = await response.json()
     return donuts
 }
 
 export const deleteDonut = async (id) =>{
-    const response = await fetch (`${API_URL}/donuts`+id, {
+    const response = await fetch (`${API_URL}/donuts`/+id, {
         method: 'DELETE'
     })
     const donutDelete = await response.json()
@@ -24,10 +24,10 @@ export const deleteDonut = async (id) =>{
 }
 
 export const updateDonut = async (id, bodyParam) => {
-    const response = await fetch(`${API_URL}/donuts`+id,{
+    const response = await fetch(`${API_URL}/donuts`/+id,{
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
-        body: bodyParam
+        body: JSON.stringify(bodyParam)
     })
     const donutUpdated = await response.json()
     if(donutUpdated.error) console.log(donutUpdated.error)
@@ -40,7 +40,7 @@ export const createDonut = async (bodyParam) => {
     const response = await fetch(`${API_URL}/donuts`,{
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: bodyParam
+        body: JSON.stringify(bodyParam)
     })
     const donutCreated = await response.json()
     if (donutCreated.error) console.log(donutCreated.error)
