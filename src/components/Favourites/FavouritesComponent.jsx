@@ -29,7 +29,7 @@ export default function FavouritesComponent() {
       </div>
       <div className={styles.cardList}>
         {favourites.length === 0 && (
-          <span className={styles.card}>No favourite donuts yet. Add some.</span>
+          <span className={styles.card}>No favourite donuts yet.</span>
         )}
         {favourites.map(fav => (
           <div className={styles.card} key={fav._id}>
