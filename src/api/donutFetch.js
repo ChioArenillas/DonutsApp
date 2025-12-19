@@ -8,13 +8,13 @@ export const getAllDonuts = async () => {
 }
 
 export const getDonut = async (id) => {
-    const response = await fetch(`${API_URL}/donuts`/+id)
+    const response = await fetch(`${API_URL}/donuts/${donutId}`)
     const donuts = await response.json()
     return donuts
 }
 
 export const deleteDonut = async (id) =>{
-    const response = await fetch (`${API_URL}/donuts`/+id, {
+    const response = await fetch (`${API_URL}/donuts/${donutId}`, {
         method: 'DELETE'
     })
     const donutDelete = await response.json()
@@ -24,7 +24,7 @@ export const deleteDonut = async (id) =>{
 }
 
 export const updateDonut = async (id, bodyParam) => {
-    const response = await fetch(`${API_URL}/donuts`/+id,{
+    const response = await fetch(`${API_URL}/donuts/${donutId}`,{
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bodyParam)
