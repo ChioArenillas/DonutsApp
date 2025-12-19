@@ -25,7 +25,7 @@ export default function FavouritesComponent() {
   return (
     <div className={styles.component}>
       <div className={styles.title}>
-        <h1>FAVOURITE DONUTS</h1>
+        <h1 >FAVOURITE DONUTS</h1>
       </div>
       <div className={styles.cardList}>
         {favourites.length === 0 && (
