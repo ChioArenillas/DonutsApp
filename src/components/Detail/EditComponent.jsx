@@ -13,7 +13,10 @@ export default function EditComponent({ donut, closeEdit }) {
 
 
   const editDonut = async (opt) => {
-    await updateDonut(id, opt)
+    const donutUpdate= {
+      ...opt, price: Number(opt.price)
+    }
+    await updateDonut(id, donutUpdate)
     closeEdit()
   }
   const validationSchemaYup = object({
@@ -34,7 +37,7 @@ export default function EditComponent({ donut, closeEdit }) {
             flavor: donut.flavor,
             price: donut.price
           }}
-          onSubmit={editDonut} validationSchemaYup={validationSchemaYup}>
+          onSubmit={editDonut} validationSchema={validationSchemaYup}>
           {
             ({ }) => (<Form className={styles.componentContainer}>
               <div>
