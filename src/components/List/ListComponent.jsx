@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styles from "./List.module.css"
-import { getAllDonuts } from '@/api/donutFetch'
 import Link from 'next/link'
-import { addFavourite, getFavourites } from '@/api/favouritesFetch'
+import { addFavourite } from '@/store/favourites/favouritesThunks'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchDonuts } from '@/store/donuts/donutsThunks'
+import { fetchFavourites } from '@/store/favourites/favouritesThunks'
 
 export default function ListComponent() {
 
-  const [donuts, setDonuts] = useState([])
-  const [favourites, setFavourites] = useState([])
+  const dispatch = useDispatch()
 
-  const getData = async () => {
-    const donutsAux = await getAllDonuts()
-    setDonuts(donutsAux.data)
-
-    const favouritesAux = await getFavourites()
-    setFavourites(favouritesAux.data)
-  }
+  const donuts = useSelector(state => state.donuts.list)
+  const favourites = useSelector(state => state.favourites.list)
+  const loading = useSelector(state => state.donuts.loading)
 
   useEffect(() => {
-    getData()
-  }, [])
+    dispatch(fetchDonuts())
+    dispatch(fetchFavourites())
+  }, [dispatch])
 
   const handleAddFavourite = async (donutId) => {
-    const res = await addFavourite(donutId)
-    setFavourites([...favourites, res.data])
-    getData()
+    await dispatch(addFavourite(donutId))
+    dispatch(fetchFavourites())
   }
+  if (loading) return <p className={styles.text}>Loading donuts...</p>
 
   return (
     <div className={styles.component}>
@@ -35,13 +33,15 @@ export default function ListComponent() {
       <div className={styles.cardList}>
         {
           donuts && donuts.map((donut) => {
-            const isFavourite = donut && favourites.find(f => f.donutId?._id === donut?.id)
+            const isFavourite = favourites.some(fav => {
+              return String(fav.donutId?._id) === String(donut?.id)
+            })
             return <div className={styles.card} key={donut?.id}>
               <div>{donut.id}</div>
               <div>{donut.name}</div>
               <div>
                 <Link href={{
-                  pathname: 'DetailPage',
+                  pathname: '/DetailPage',
                   query: {
                     id: donut.id
                   }
@@ -50,9 +50,9 @@ export default function ListComponent() {
               <div>
                 {
                   !isFavourite ?
-                    <button className={styles.smallBtn} onClick={() => handleAddFavourite(donut.id)}>Add to Favourites</button>
-                :
-                  <span> 🩷 </span>
+                    <button className={styles.smallBtn} onClick={() => { console.log("click en añadir favorito"); handleAddFavourite(donut.id); }}>Add to Favourites</button>
+                    :
+                    <span> 🩷 </span>
                 }
               </div>
             </div>

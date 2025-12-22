@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./Favourite.module.css"
-import { getFavourites, deleteFavourite } from '@/api/favouritesFetch'
+import { deleteFavourite } from '@/store/favourites/favouritesThunks'
 import Link from 'next/link'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchFavourites } from '@/store/favourites/favouritesThunks'
 
 export default function FavouritesComponent() {
 
-  const [favourites, setFavourites] = useState([])
+  const dispatch = useDispatch()
 
-  const getFavouritesAux = async () => {
-    const res = await getFavourites()
-    const validFavourites = res.data.filter(f => f.donutId !== null)
-      setFavourites(validFavourites)
-  }
+  const favourites = useSelector(state => state.favourites.list)
+  const loading = useSelector(state => state.favourites.loading)
 
   useEffect(() => {
-    getFavouritesAux()
-  }, [])
+    dispatch(fetchFavourites())
+  }, [dispatch])
 
-  const removeFavourite = async (donutId) => {
-    const res = await deleteFavourite(donutId)
-    setFavourites(favourites.filter(f => f.donutId?._id !== donutId))
+  const removeFavourite = (donutId) => {
+    dispatch(deleteFavourite(donutId))
   }
+  if (loading) return <p className={styles.text}>Loading donuts...</p>
 
   return (
     <div className={styles.component}>
@@ -31,13 +30,15 @@ export default function FavouritesComponent() {
         {favourites.length === 0 && (
           <span className={styles.card}>No favourite donuts yet.</span>
         )}
-        {favourites.map(fav => (
+        {favourites
+        .filter(fav => fav.donutId)
+        .map(fav => (
           <div className={styles.card} key={fav._id}>
             <div>{fav.donutId?._id}</div>
             <div>{fav.donutId?.name}</div>
             <div>
               <Link href={{
-                pathname: 'DetailPage',
+                pathname: '/DetailPage',
                 query: { id: fav.donutId?._id }
               }}>
                 <button className={styles.smallBtn}>Details</button>

@@ -13,29 +13,6 @@ export const getDonut = async (donutId) => {
     return donuts
 }
 
-export const deleteDonut = async (donutId) =>{
-    const response = await fetch (`${API_URL}/donuts/${donutId}`, {
-        method: 'DELETE'
-    })
-    const donutDelete = await response.json()
-    if(donutDelete.error) console.log(donutDelete.error)
-        console.log('todo fue bien')
-        return
-}
-
-export const updateDonut = async (donutId, bodyParam) => {
-    const response = await fetch(`${API_URL}/donuts/${donutId}`,{
-        method: 'PUT',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyParam)
-    })
-    const donutUpdated = await response.json()
-    if(donutUpdated.error) console.log(donutUpdated.error)
-        console.log(donutUpdated)
-        return
-
-}
-
 export const createDonut = async (bodyParam) => {
     const response = await fetch(`${API_URL}/donuts`,{
         method: 'POST',
@@ -48,3 +25,26 @@ export const createDonut = async (bodyParam) => {
         return
 
 }
+export const updateDonut = async (donutId, bodyParam) => {
+    const response = await fetch(`${API_URL}/donuts/${donutId}`,{
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bodyParam)
+    })
+    const donutUpdated = await response.json()
+    if(donutUpdated.error) console.log(donutUpdated.error)
+        console.log(donutUpdated)
+        return
+
+}
+export const deleteDonut = async (donutId) =>{
+    const response = await fetch (`${API_URL}/donuts/${donutId}`, {
+        method: 'DELETE'
+    })
+    const donutDelete = await response.json()
+    if(donutDelete.error) console.log(donutDelete.error)
+        console.log('todo fue bien')
+        return
+}
+
+
