@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 export default function CreateComponent() {
 
   const dispatch = useDispatch()
-  const [successMessage, setSuccessMessage] = useState('')
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false)
 
   const validationSchemaYup = object({
     name: string().required(),
@@ -18,18 +18,15 @@ export default function CreateComponent() {
   })
 
   const handleCreateDonut = async (values, {resetForm}) => {
-    const donutToCreate = {
+      const donutToCreate = {
       ...values,
       price: Number(values.price)
     }
-    try {
-      await dispatch(createDonut(donutToCreate)).unwrap()
+      await dispatch(createDonut(donutToCreate))
         resetForm()
-        setSuccessMessage('New Donut has been added to the list')
-    } catch (err) {
-      console.error(err)
-    }
-  }
+        setSuccessMessageVisible(true)
+        setTimeout(() => setSuccessMessageVisible(false), 3000)
+}
 
   return (
     <div>
@@ -64,8 +61,8 @@ export default function CreateComponent() {
               </div>
               <button type='submit' className={styles.smallBtn}>SAVE</button>
               <div>
-                {successMessage && (
-                  <p className={styles.successMessage}>{successMessage}</p>
+                {successMessageVisible && (
+                  <p className={styles.successMessage}>New Donut has been created</p>
                 )}
               </div>
             </Form>

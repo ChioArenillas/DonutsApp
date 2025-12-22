@@ -29,7 +29,6 @@ const favouritesSlice = createSlice({
             state.list = action.error.message
         })
         .addCase(addFavourite.fulfilled, (state, action) =>{
-            console.log('payload en slice:', action.payload)
             state.list.push(action.payload)
         })
         .addCase(deleteFavourite.fulfilled, (state, action) => {

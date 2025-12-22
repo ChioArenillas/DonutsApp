@@ -50,7 +50,7 @@ export default function ListComponent() {
               <div>
                 {
                   !isFavourite ?
-                    <button className={styles.smallBtn} onClick={() => { console.log("click en añadir favorito"); handleAddFavourite(donut.id); }}>Add to Favourites</button>
+                    <button className={styles.smallBtn} onClick={() => handleAddFavourite(donut.id)}>Add to Favourites</button>
                     :
                     <span> 🩷 </span>
                 }
