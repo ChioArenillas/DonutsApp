@@ -10,7 +10,10 @@ export default function CreateComponent() {
 const [successMessage, setSuccessMessage] = useState('')
 
 const newDonut = async (opt, {resetForm}) => {
-  await createDonut(opt)
+  const donutCreate={
+    ...opt, price: Number(opt.price)
+  }
+  await createDonut(donutCreate)
   resetForm()
   setSuccessMessage('New Donut has been added to the list')
  }
