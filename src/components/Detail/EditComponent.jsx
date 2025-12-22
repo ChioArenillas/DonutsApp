@@ -13,7 +13,7 @@ export default function EditComponent({ donut, closeEdit }) {
 
 
   const editDonut = async (opt) => {
-    await updateDonut(id, JSON.stringify(opt))
+    await updateDonut(id, opt)
     closeEdit()
   }
   const validationSchemaYup = object({
