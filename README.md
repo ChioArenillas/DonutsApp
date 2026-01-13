@@ -4,6 +4,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 <h1>Rocio Arenillas</h1>
 
+
+\front\my-app\.env.local
+NEXT_PUBLIC_API_URL=https://back-6s0i.onrender.com
+
+\back\.env
+MONGO_URI=mongodb+srv://timiotull_db_user:I05XLEIv2PetwjSn@cluster0.uh5ltif.mongodb.net/test?retryWrites=true&w=majority
+
+
+
 First, run the development server:
 
 ```bash
