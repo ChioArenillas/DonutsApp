@@ -8,7 +8,7 @@ The project focuses on creating a clean UI and managing dynamic state to provide
 
 ## 🚀 Live Demo
 
-https://donuts-app-chi.vercel.app/
+https://donuts-app-web.vercel.app/
 
 ## 🚀 Technologies
 
