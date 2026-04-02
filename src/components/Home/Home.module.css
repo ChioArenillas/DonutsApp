@@ -1,7 +1,19 @@
 @import "../../styles/vars.css";
 @import "../../styles/globals.css";
 
-    
+.container h1 {
+  font-size: 42px;
+  color: white;
+  margin: 10px;
+}
+.container p {
+  font-size: 24px;
+  color: white;
+  margin: 10px auto;
+  text-align: center;
+  max-width: 800px;
+}
+
 .btnSectionHome{
   display: grid;
   grid-template-columns: 1fr 1fr;
